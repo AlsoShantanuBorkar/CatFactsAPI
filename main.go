@@ -91,9 +91,10 @@ func main() {
 	}
 
 	worker := CatFactWorkerConstructor(client)
+
 	go worker.start()
 
 	server := ServerConstructor(client)
 	http.HandleFunc("/facts", server.handleGetAllFacts)
-	http.ListenAndServe("3000", nil)
+	http.ListenAndServe(":3000", nil)
 }
